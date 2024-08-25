@@ -25,13 +25,21 @@ function App() {
   }
 
   function handleDel(i) {
-      todolist.splice(i,1)
-      setTodolist(todolist)
-      setCount(count-1) //not sure
+    setTodolist(todolist.filter(({id, text}) => id !== i))
+      //todolist.splice(i,1)
+      //setTodolist(todolist)
+      //setCount(count-1) //not sure
   }
+  function handleEdit(index, word) {
+    for (let i = 0; i < todolist.length; i++) {
+      if (todolist[i].id === index) {
+        todolist[i].text = word
+        setTodolist(todolist)
+        break
+      }
+    }
 
-  function handleEdit(i) {
-    console.log("hello")
+
   }
 
 
@@ -40,7 +48,7 @@ function App() {
     <div>
     <HeaderText></HeaderText>
     <WindowBox Del={(i)=>handleDel(i)}
-    Edit={(i)=>handleEdit(i)}
+    Edit={(i, word)=>handleEdit(i, word)}
     array={todolist}
     >400px
     </WindowBox>
