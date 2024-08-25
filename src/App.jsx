@@ -24,14 +24,25 @@ function App() {
     setInput("")
   }
 
+  function handleDel(i) {
+      todolist.splice(i,1)
+      setTodolist(todolist)
+      setCount(count-1) //not sure
+  }
+
+  function handleEdit(i) {
+    console.log("hello")
+  }
+
 
 
   return (
     <div>
     <HeaderText></HeaderText>
-    <WindowBox
-    array={todolist}>400px
-    co={count}
+    <WindowBox Del={(i)=>handleDel(i)}
+    Edit={(i)=>handleEdit(i)}
+    array={todolist}
+    >400px
     </WindowBox>
 
     <div className="btnContainer">
